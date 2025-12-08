@@ -33,4 +33,5 @@ position = Vector2(9.691864, 16.99649)
 
 [node name="CanvasLayer" parent="." instance=ExtResource("4_hmkul")]
 
+[connection signal="collect" from="Player" to="CanvasLayer" method="_on_player_collect"]
 [connection signal="timeout" from="CollectableTimer" to="." method="_on_collectable_timer_timeout"]

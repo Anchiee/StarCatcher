@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dyb4kuje21an7"]
+[gd_scene load_steps=3 format=3 uid="uid://dyb4kuje21an7"]
 
+[ext_resource type="Script" uid="uid://cr41ai0h5a5rl" path="res://scripts/HUDS/game.gd" id="1_up6v3"]
 [ext_resource type="FontFile" uid="uid://1pmo6i1lvaey" path="res://assets/fonts/Pijamas-ejPO.ttf" id="1_vs423"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_up6v3")
 
 [node name="Label" type="Label" parent="."]
 anchors_preset = 5
