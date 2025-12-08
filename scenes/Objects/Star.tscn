@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://d1iyo5e7r7ki8"]
+
+[ext_resource type="Script" uid="uid://cct3s8a7eoof" path="res://scripts/objects/star.gd" id="1_a00xs"]
+[ext_resource type="PackedScene" uid="uid://c7fp6eob20l2c" path="res://scenes/HUDs/PopupLabel.tscn" id="2_im1hq"]
+[ext_resource type="Texture2D" uid="uid://bj361vmsum2fr" path="res://assets/star/Star1.png" id="2_t20a8"]
+[ext_resource type="Texture2D" uid="uid://do5inw1roljh" path="res://assets/star/Star2.png" id="3_im1hq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fixdg"]
+radius = 42.047592
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c8koa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_t20a8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_im1hq")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}]
+
+[node name="Star" type="RigidBody2D"]
+mass = 10.0
+gravity_scale = 0.4
+script = ExtResource("1_a00xs")
+popup_label = ExtResource("2_im1hq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_fixdg")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_c8koa")
+animation = &"fall"
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyb4kuje21an7"]
+
+[ext_resource type="FontFile" uid="uid://1pmo6i1lvaey" path="res://assets/fonts/Pijamas-ejPO.ttf" id="1_vs423"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -71.0
+offset_top = 20.0
+offset_right = 72.0
+offset_bottom = 71.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_vs423")
+theme_override_font_sizes/font_size = 50
+text = "Score: 0 "

@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtp4c4fifiag0"]
+
+[ext_resource type="Script" uid="uid://dqbio8ixrd3fv" path="res://scripts/levels/menu.gd" id="1_qdlcg"]
+[ext_resource type="PackedScene" uid="uid://c6kt58ym6anes" path="res://scenes/HUDs/Menu.tscn" id="1_xdvgc"]
+[ext_resource type="PackedScene" uid="uid://d1iyo5e7r7ki8" path="res://scenes/Objects/Star.tscn" id="2_0u4nv"]
+
+[sub_resource type="Curve2D" id="Curve2D_0u4nv"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 22, 28, 0, 0, 0, 0, 442, 23)
+}
+point_count = 2
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_qdlcg")
+collectable = ExtResource("2_0u4nv")
+
+[node name="MenuHud" parent="." instance=ExtResource("1_xdvgc")]
+
+[node name="CollectableTimer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_0u4nv")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(22, 28)
+rotation = -0.011904199
+
+[connection signal="timeout" from="CollectableTimer" to="." method="_on_collectable_timer_timeout"]

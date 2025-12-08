@@ -1,0 +1,87 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6kt58ym6anes"]
+
+[ext_resource type="Script" uid="uid://c0edl2j475fsp" path="res://scripts/HUDS/menu.gd" id="1_12pfn"]
+[ext_resource type="FontFile" uid="uid://1pmo6i1lvaey" path="res://assets/fonts/Pijamas-ejPO.ttf" id="1_ou6dq"]
+
+[node name="MenuHud" type="CanvasLayer"]
+script = ExtResource("1_12pfn")
+
+[node name="Header" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -57.0
+offset_top = 98.0
+offset_right = 57.0
+offset_bottom = 121.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_ou6dq")
+theme_override_font_sizes/font_size = 55
+text = "STAR CATCHER"
+
+[node name="InteractiveContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -171.5
+offset_top = -46.0
+offset_right = 171.5
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 13
+
+[node name="Paragraph" type="Label" parent="InteractiveContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_ou6dq")
+theme_override_font_sizes/font_size = 30
+text = "Collect the items or face the consequences"
+
+[node name="Play" type="Button" parent="InteractiveContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.3764706, 0.3764706, 0.3764706, 1)
+theme_override_colors/font_hover_color = Color(0.22670722, 0.22670752, 0.22670802, 1)
+theme_override_fonts/font = ExtResource("1_ou6dq")
+theme_override_font_sizes/font_size = 30
+text = "PLAY"
+flat = true
+
+[node name="Quit" type="Button" parent="InteractiveContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.3764706, 0.3764706, 0.3764706, 1)
+theme_override_colors/font_hover_color = Color(0.22745098, 0.22745098, 0.22745098, 1)
+theme_override_fonts/font = ExtResource("1_ou6dq")
+theme_override_font_sizes/font_size = 30
+text = "QUIT
+"
+flat = true
+
+[node name="Footer" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -157.5
+offset_top = -56.0
+offset_right = 157.5
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_ou6dq")
+theme_override_font_sizes/font_size = 30
+text = "Made by Anchie"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[connection signal="pressed" from="InteractiveContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="InteractiveContainer/Quit" to="." method="_on_quit_pressed"]
