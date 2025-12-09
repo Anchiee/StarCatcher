@@ -37,5 +37,7 @@ position = Vector2(9.691864, 16.99649)
 [node name="LoseHUD" parent="." instance=ExtResource("5_wp50s")]
 visible = false
 
-[connection signal="collect" from="Player" to="GameHUD" method="_on_player_collect"]
+[connection signal="lost_game" from="." to="LoseHUD" method="_on_game_lost_game"]
+[connection signal="score_changed" from="." to="GameHUD" method="_on_game_score_changed"]
+[connection signal="collect" from="Player" to="." method="_on_player_collect"]
 [connection signal="timeout" from="CollectableTimer" to="." method="_on_collectable_timer_timeout"]

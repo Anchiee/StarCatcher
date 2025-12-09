@@ -38,7 +38,7 @@ theme_override_constants/separation = 13
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_ou6dq")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 35
 text = "Collect the items or face the consequences"
 
 [node name="Play" type="Button" parent="InteractiveContainer"]
@@ -48,7 +48,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0.3764706, 0.3764706, 0.3764706, 1)
 theme_override_colors/font_hover_color = Color(0.22670722, 0.22670752, 0.22670802, 1)
 theme_override_fonts/font = ExtResource("1_ou6dq")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 35
 text = "PLAY"
 flat = true
 
@@ -59,7 +59,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0.3764706, 0.3764706, 0.3764706, 1)
 theme_override_colors/font_hover_color = Color(0.22745098, 0.22745098, 0.22745098, 1)
 theme_override_fonts/font = ExtResource("1_ou6dq")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 35
 text = "QUIT
 "
 flat = true

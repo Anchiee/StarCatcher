@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+@onready var score_label := $Parent/InfoContainer/Score
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,3 +18,7 @@ func _on_play_pressed() -> void:
 
 func _on_main_menu_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/Levels/Menu.tscn")
+
+
+func _on_game_lost_game(current_score: Variant) -> void:
+	score_label.text = "Your score was: " + str(current_score)

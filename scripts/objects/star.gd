@@ -1,7 +1,7 @@
 extends Node
 @export var popup_label: PackedScene
 
-signal lose
+signal lost
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,5 +14,5 @@ func _process(_delta: float) -> void:
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	lose.emit()
+	lost.emit()
 	queue_free()

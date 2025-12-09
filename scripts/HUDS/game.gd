@@ -1,6 +1,5 @@
 extends CanvasLayer
 
-var score: int = 0
 @onready var score_label: Label = $Label
 
 # Called when the node enters the scene tree for the first time.
@@ -13,6 +12,5 @@ func _process(_delta: float) -> void:
 	pass
 
 
-func _on_player_collect() -> void:
-	score += 1
-	score_label.text = "Score: " + str(score)
+func _on_game_score_changed(new_score: Variant) -> void:
+	score_label.text = "Score: " + str(new_score)

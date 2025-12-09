@@ -1,6 +1,12 @@
 extends Node
 
 @export var collectable: PackedScene
+
+signal score_changed(new_score)
+signal lost_game(current_score)
+
+var score: int = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -17,12 +23,18 @@ func _on_collectable_timer_timeout() -> void:
 	var spawn_location = $Path2D/PathFollow2D
 	spawn_location.progress_ratio = randf()
 	
-	item.lose.connect(on_star_lose)
+	item.lost.connect(on_star_lose)
 	item.position = spawn_location.position
 	add_child(item)
 
+
+func _on_player_collect() -> void:
+	score += 1
+	score_changed.emit(score)
+	
 func on_star_lose():
-	$GameHUD.hide()
+	lost_game.emit(score)
 	$LoseHUD.show()
-	$CollectableTimer.stop()
+	$GameHUD.hide()
 	$Player.queue_free()
+	$CollectableTimer.stop()
