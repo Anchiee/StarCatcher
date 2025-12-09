@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://sw8v2c4e1hel"]
+[gd_scene load_steps=7 format=3 uid="uid://sw8v2c4e1hel"]
 
 [ext_resource type="Script" uid="uid://bmo0jxjevon1t" path="res://scripts/levels/game.gd" id="1_jkhre"]
 [ext_resource type="PackedScene" uid="uid://d1iyo5e7r7ki8" path="res://scenes/Objects/Star.tscn" id="2_hmkul"]
 [ext_resource type="PackedScene" uid="uid://doxk5ebwq510y" path="res://scenes/Objects/Player.tscn" id="3_wp50s"]
 [ext_resource type="PackedScene" uid="uid://dyb4kuje21an7" path="res://scenes/HUDs/Game.tscn" id="4_hmkul"]
+[ext_resource type="PackedScene" uid="uid://by05umnc6m3mu" path="res://scenes/HUDs/Lose.tscn" id="5_wp50s"]
 
 [sub_resource type="Curve2D" id="Curve2D_cpr0p"]
 _data = {
@@ -31,7 +32,10 @@ curve = SubResource("Curve2D_cpr0p")
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 position = Vector2(9.691864, 16.99649)
 
-[node name="CanvasLayer" parent="." instance=ExtResource("4_hmkul")]
+[node name="GameHUD" parent="." instance=ExtResource("4_hmkul")]
 
-[connection signal="collect" from="Player" to="CanvasLayer" method="_on_player_collect"]
+[node name="LoseHUD" parent="." instance=ExtResource("5_wp50s")]
+visible = false
+
+[connection signal="collect" from="Player" to="GameHUD" method="_on_player_collect"]
 [connection signal="timeout" from="CollectableTimer" to="." method="_on_collectable_timer_timeout"]

@@ -1,0 +1,63 @@
+[gd_scene load_steps=3 format=3 uid="uid://by05umnc6m3mu"]
+
+[ext_resource type="Script" uid="uid://bfoyqaqnex682" path="res://scripts/HUDS/lose.gd" id="1_ma0xl"]
+[ext_resource type="FontFile" uid="uid://1pmo6i1lvaey" path="res://assets/fonts/Pijamas-ejPO.ttf" id="1_vwd5h"]
+
+[node name="Lose" type="CanvasLayer"]
+script = ExtResource("1_ma0xl")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -71.0
+offset_top = -139.0
+offset_right = 71.0
+offset_bottom = -98.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_vwd5h")
+theme_override_font_sizes/font_size = 40
+text = "YOU LOST"
+
+[node name="InteractiveContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -171.5
+offset_top = -46.0
+offset_right = 171.5
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 13
+
+[node name="Play" type="Button" parent="InteractiveContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.3764706, 0.3764706, 0.3764706, 1)
+theme_override_colors/font_hover_color = Color(0.22670722, 0.22670752, 0.22670802, 1)
+theme_override_fonts/font = ExtResource("1_vwd5h")
+theme_override_font_sizes/font_size = 30
+text = "PLAY AGAIN"
+flat = true
+
+[node name="Main Menu" type="Button" parent="InteractiveContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.3764706, 0.3764706, 0.3764706, 1)
+theme_override_colors/font_hover_color = Color(0.22745098, 0.22745098, 0.22745098, 1)
+theme_override_fonts/font = ExtResource("1_vwd5h")
+theme_override_font_sizes/font_size = 30
+text = "MAIN  MENU"
+flat = true
+
+[connection signal="pressed" from="InteractiveContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="InteractiveContainer/Main Menu" to="." method="_on_main_menu_pressed"]

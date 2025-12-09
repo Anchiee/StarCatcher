@@ -17,5 +17,12 @@ func _on_collectable_timer_timeout() -> void:
 	var spawn_location = $Path2D/PathFollow2D
 	spawn_location.progress_ratio = randf()
 	
+	item.lose.connect(on_star_lose)
 	item.position = spawn_location.position
 	add_child(item)
+
+func on_star_lose():
+	$GameHUD.hide()
+	$LoseHUD.show()
+	$CollectableTimer.stop()
+	$Player.queue_free()

@@ -1,6 +1,8 @@
 extends Node
 @export var popup_label: PackedScene
 
+signal lose
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$AnimatedSprite2D.play("fall")
@@ -12,4 +14,5 @@ func _process(_delta: float) -> void:
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	lose.emit()
 	queue_free()
