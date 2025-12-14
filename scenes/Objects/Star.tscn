@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cct3s8a7eoof" path="res://scripts/objects/star.gd" id="1_a00xs"]
 [ext_resource type="PackedScene" uid="uid://c7fp6eob20l2c" path="res://scenes/HUDs/PopupLabel.tscn" id="2_im1hq"]
-[ext_resource type="Texture2D" uid="uid://bj361vmsum2fr" path="res://assets/star/Star1.png" id="2_t20a8"]
-[ext_resource type="Texture2D" uid="uid://do5inw1roljh" path="res://assets/star/Star2.png" id="3_im1hq"]
+[ext_resource type="Texture2D" uid="uid://bj361vmsum2fr" path="res://assets/objects/star/Star1.png" id="2_t20a8"]
+[ext_resource type="Texture2D" uid="uid://do5inw1roljh" path="res://assets/objects/star/Star2.png" id="3_im1hq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fixdg"]
 radius = 42.047592

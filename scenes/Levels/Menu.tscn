@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dtp4c4fifiag0"]
+[gd_scene load_steps=6 format=3 uid="uid://dtp4c4fifiag0"]
 
 [ext_resource type="Script" uid="uid://dqbio8ixrd3fv" path="res://scripts/levels/menu.gd" id="1_qdlcg"]
 [ext_resource type="PackedScene" uid="uid://c6kt58ym6anes" path="res://scenes/HUDs/Menu.tscn" id="1_xdvgc"]
 [ext_resource type="PackedScene" uid="uid://d1iyo5e7r7ki8" path="res://scenes/Objects/Star.tscn" id="2_0u4nv"]
+[ext_resource type="AudioStream" uid="uid://lylr3mcmbdky" path="res://assets/sounds/gamesound.mp3" id="4_n6pwr"]
 
 [sub_resource type="Curve2D" id="Curve2D_0u4nv"]
 _data = {
@@ -26,5 +27,10 @@ curve = SubResource("Curve2D_0u4nv")
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 position = Vector2(22, 28)
 rotation = -0.011904199
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_n6pwr")
+volume_db = -10.0
+autoplay = true
 
 [connection signal="timeout" from="CollectableTimer" to="." method="_on_collectable_timer_timeout"]
