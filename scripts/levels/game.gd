@@ -1,6 +1,7 @@
 extends Node
 
 @export var collectable: PackedScene
+@export var xmark: PackedScene
 
 signal score_changed(new_score)
 signal lost_game(current_score)
@@ -21,13 +22,25 @@ func _process(_delta: float) -> void:
 
 
 func _on_collectable_timer_timeout() -> void:
-	var item := collectable.instantiate()
 	
-	var spawn_location = $Path2D/PathFollow2D
+	#xmark 10% probability
+	var probability := randi_range(0, 100)
+	
+	print(probability)
+	
+	var spawn_location := $Path2D/PathFollow2D
 	spawn_location.progress_ratio = randf()
 	
-	item.lost.connect(on_star_lose)
+	var item: Node
+	
+	if probability > 10:
+		item = collectable.instantiate()
+		item.lost.connect(on_lose)
+	else:
+		item = xmark.instantiate()
+		
 	item.position = spawn_location.position
+	
 	add_child(item)
 
 
@@ -36,7 +49,7 @@ func _on_player_collect() -> void:
 	score_changed.emit(score)
 	play_sound(collect_sound)
 	
-func on_star_lose():
+func on_lose():
 	lost_game.emit(score)
 	$LoseHUD.show()
 	$GameHUD.hide()

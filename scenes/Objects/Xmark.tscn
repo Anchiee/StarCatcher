@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://b3l3oy2utr7ji"]
+
+[ext_resource type="Script" uid="uid://b158qmnd83dtr" path="res://scripts/objects/xmark.gd" id="1_u3v56"]
+[ext_resource type="Texture2D" uid="uid://6ubt48hsctji" path="res://assets/objects/xmark/xmark1.png" id="2_t1a2i"]
+[ext_resource type="Texture2D" uid="uid://d4ci6eoasephn" path="res://assets/objects/xmark/xmark2.png" id="3_6sxud"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k51rm"]
+radius = 42.047592
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a2vxx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_t1a2i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6sxud")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}]
+
+[node name="RigidBody2D" type="RigidBody2D" groups=["enemy"]]
+gravity_scale = 0.4
+script = ExtResource("1_u3v56")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_k51rm")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(14, 5)
+sprite_frames = SubResource("SpriteFrames_a2vxx")
+animation = &"fall"
+frame_progress = 0.30630803
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

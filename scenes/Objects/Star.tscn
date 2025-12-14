@@ -22,7 +22,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Star" type="RigidBody2D"]
+[node name="Star" type="RigidBody2D" groups=["collectable"]]
 mass = 10.0
 gravity_scale = 0.4
 script = ExtResource("1_a00xs")

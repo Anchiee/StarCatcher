@@ -1,6 +1,7 @@
 extends Area2D
 
 signal collect
+signal lost
 
 @onready var popup_label = preload("res://scenes/HUDs/PopupLabel.tscn")
 
@@ -28,10 +29,13 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group('collectable'):
+		var current_position := position
+		var label_child = popup_label.instantiate()
+		add_child(label_child)
+		label_child.render_text("+1", current_position)
+		collect.emit()
+	else:
+		lost.emit()
 	body.queue_free()
-	var current_position := position
-	var label_child = popup_label.instantiate()
-	add_child(label_child)
-	label_child.render_text("+1", current_position)
 	
-	collect.emit()

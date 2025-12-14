@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://sw8v2c4e1hel"]
+[gd_scene load_steps=9 format=3 uid="uid://sw8v2c4e1hel"]
 
 [ext_resource type="Script" uid="uid://bmo0jxjevon1t" path="res://scripts/levels/game.gd" id="1_jkhre"]
 [ext_resource type="PackedScene" uid="uid://d1iyo5e7r7ki8" path="res://scenes/Objects/Star.tscn" id="2_hmkul"]
+[ext_resource type="PackedScene" uid="uid://b3l3oy2utr7ji" path="res://scenes/Objects/Xmark.tscn" id="3_mmuvi"]
 [ext_resource type="PackedScene" uid="uid://doxk5ebwq510y" path="res://scenes/Objects/Player.tscn" id="3_wp50s"]
 [ext_resource type="PackedScene" uid="uid://dyb4kuje21an7" path="res://scenes/HUDs/Game.tscn" id="4_hmkul"]
 [ext_resource type="PackedScene" uid="uid://by05umnc6m3mu" path="res://scenes/HUDs/Lose.tscn" id="5_wp50s"]
@@ -16,6 +17,7 @@ point_count = 7
 [node name="Game" type="Node2D"]
 script = ExtResource("1_jkhre")
 collectable = ExtResource("2_hmkul")
+xmark = ExtResource("3_mmuvi")
 
 [node name="Player" parent="." instance=ExtResource("3_wp50s")]
 position = Vector2(217, 661)
@@ -48,4 +50,5 @@ autoplay = true
 [connection signal="lost_game" from="." to="LoseHUD" method="_on_game_lost_game"]
 [connection signal="score_changed" from="." to="GameHUD" method="_on_game_score_changed"]
 [connection signal="collect" from="Player" to="." method="_on_player_collect"]
+[connection signal="lost" from="Player" to="." method="on_lose"]
 [connection signal="timeout" from="CollectableTimer" to="." method="_on_collectable_timer_timeout"]
