@@ -62,3 +62,17 @@ func on_lose():
 func play_sound(sound: Resource):
 	$VFX.stream = sound
 	$VFX.play()
+
+
+func _on_player_pause(paused: bool) -> void:
+	if paused:
+		Engine.time_scale = 0
+		$PauseHUD.show()
+	else:
+		Engine.time_scale = 1
+		$PauseHUD.hide()
+
+
+func _on_pause_hud_resume() -> void:
+	$PauseHUD.hide()
+	Engine.time_scale = 1

@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://lgu0vyel1r7r"]
+
+[ext_resource type="Script" uid="uid://bxlu34bg1pf4e" path="res://scripts/HUDS/pause.gd" id="1_qwrga"]
+[ext_resource type="FontFile" uid="uid://1pmo6i1lvaey" path="res://assets/fonts/Pijamas-ejPO.ttf" id="2_4qf66"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_qwrga")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.23392546, 0.23392546, 0.23392543, 0.24313726)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Header" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_4qf66")
+theme_override_font_sizes/font_size = 30
+text = "The game has been paused"
+
+[node name="Resume" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_4qf66")
+theme_override_font_sizes/font_size = 30
+text = "RESUME"
+flat = true
+
+[node name="Menu" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_4qf66")
+theme_override_font_sizes/font_size = 30
+text = "MENU"
+flat = true
+
+[connection signal="pressed" from="VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="VBoxContainer/Menu" to="." method="_on_menu_pressed"]

@@ -2,12 +2,16 @@ extends Area2D
 
 signal collect
 signal lost
+signal pause
 
 @onready var popup_label = preload("res://scenes/HUDs/PopupLabel.tscn")
+@onready var animated_sprite = $AnimatedSprite2D
 
 @export var speed: float = 50.0
 
 var viewport_width: float
+
+var paused: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,14 +22,18 @@ func _process(delta: float) -> void:
 
 	var direction := Input.get_action_strength("right") - Input.get_action_strength("left")
 	
-	if(direction != 0):
-		$AnimatedSprite2D.play("walk")
-		$AnimatedSprite2D.flip_h = direction < 0
+	if direction != 0 && !paused:
+		animated_sprite.play("walk")
+		animated_sprite.flip_h = direction < 0
 	else:
-		$AnimatedSprite2D.stop()
+		animated_sprite.stop()
 	
 	position.x += direction * speed * delta 
 	position.x = clamp(position.x, 0, viewport_width)
+	
+	if Input.is_action_just_pressed("pause"):
+		paused = !paused
+		pause.emit(paused)
 
 
 func _on_body_entered(body: Node2D) -> void:
@@ -39,3 +47,7 @@ func _on_body_entered(body: Node2D) -> void:
 		lost.emit()
 	body.queue_free()
 	
+
+
+func _on_pause_hud_resume() -> void:
+	paused = !paused

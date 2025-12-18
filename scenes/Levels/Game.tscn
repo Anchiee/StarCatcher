@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://sw8v2c4e1hel"]
+[gd_scene load_steps=10 format=3 uid="uid://sw8v2c4e1hel"]
 
 [ext_resource type="Script" uid="uid://bmo0jxjevon1t" path="res://scripts/levels/game.gd" id="1_jkhre"]
 [ext_resource type="PackedScene" uid="uid://d1iyo5e7r7ki8" path="res://scenes/Objects/Star.tscn" id="2_hmkul"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dyb4kuje21an7" path="res://scenes/HUDs/Game.tscn" id="4_hmkul"]
 [ext_resource type="PackedScene" uid="uid://by05umnc6m3mu" path="res://scenes/HUDs/Lose.tscn" id="5_wp50s"]
 [ext_resource type="AudioStream" uid="uid://lylr3mcmbdky" path="res://assets/sounds/gamesound.mp3" id="6_4ym4t"]
+[ext_resource type="PackedScene" uid="uid://lgu0vyel1r7r" path="res://scenes/HUDs/Pause.tscn" id="8_y8nbm"]
 
 [sub_resource type="Curve2D" id="Curve2D_cpr0p"]
 _data = {
@@ -47,8 +48,14 @@ stream = ExtResource("6_4ym4t")
 volume_db = -10.0
 autoplay = true
 
+[node name="PauseHUD" parent="." instance=ExtResource("8_y8nbm")]
+visible = false
+
 [connection signal="lost_game" from="." to="LoseHUD" method="_on_game_lost_game"]
 [connection signal="score_changed" from="." to="GameHUD" method="_on_game_score_changed"]
 [connection signal="collect" from="Player" to="." method="_on_player_collect"]
 [connection signal="lost" from="Player" to="." method="on_lose"]
+[connection signal="pause" from="Player" to="." method="_on_player_pause"]
 [connection signal="timeout" from="CollectableTimer" to="." method="_on_collectable_timer_timeout"]
+[connection signal="resume" from="PauseHUD" to="." method="_on_pause_hud_resume"]
+[connection signal="resume" from="PauseHUD" to="Player" method="_on_pause_hud_resume"]
